@@ -20,8 +20,8 @@ CREATE TABLE merchants (
 
 -- Insert Sample Data
 INSERT INTO users (name, balance) VALUES
-('Ashok', 10000),
-('Rahul', 5000);
+('jameer', 10000),
+('vikas', 5000);
 
 INSERT INTO merchants (merchant_name, balance) VALUES
 ('Amazon', 20000),
