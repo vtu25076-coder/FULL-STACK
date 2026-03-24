@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+
+        input:hover, textarea:hover {
+            border-color: blue;
+            background: #eef;
+        }
+
+        button {
+            padding: 10px;
+            width: 100%;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkgreen;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Feedback Form</h2>
+
+    <input type="text" id="name" placeholder="Enter your name" onkeyup="validateName()">
+    <div id="nameError" class="error"></div>
+
+    <input type="email" id="email" placeholder="Enter your email" onkeyup="validateEmail()">
+    <div id="emailError" class="error"></div>
+
+    <textarea id="feedback" placeholder="Your feedback"></textarea>
+
+    <button ondblclick="submitForm()">Submit (Double Click)</button>
+</div>
+
+<script>
+    // ✅ Name validation function
+    function validateName() {
+        let name = document.getElementById("name").value;
+        let error = document.getElementById("nameError");
+
+        if (name.length < 3) {
+            error.innerHTML = "Name must be at least 3 characters";
+        } else {
+            error.innerHTML = "";
+        }
+    }
+
+    // ✅ Email validation function
+    function validateEmail() {
+        let email = document.getElementById("email").value;
+        let error = document.getElementById("emailError");
+
+        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        if (!email.match(pattern)) {
+            error.innerHTML = "Enter valid email";
+        } else {
+            error.innerHTML = "";
+        }
+    }
+
+    // ✅ Submit function (double-click event)
+    function submitForm() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+
+        if (name === "" || email === "") {
+            alert("Please fill all required fields");
+        } else {
+            alert("Feedback submitted successfully 🎉");
+        }
+    }
+</script>
+
+</body>
+</html>
